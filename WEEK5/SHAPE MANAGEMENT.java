@@ -13,6 +13,7 @@ public class ShapeManagementApp {
 
         abstract double area();
         abstract double perimeter();
+        abstract String extraInfo();
 
         public String toString() {
             return getClass().getSimpleName() + " (" + color + ")  area = "
@@ -39,6 +40,10 @@ public class ShapeManagementApp {
         double perimeter() {
             return 2 * Math.PI * radius;
         }
+
+        String extraInfo() {
+            return "Circle radius = " + radius;
+        }
     }
 
     static class Rectangle extends Shape {
@@ -62,6 +67,10 @@ public class ShapeManagementApp {
 
         double perimeter() {
             return 2 * (length + breadth);
+        }
+
+        String extraInfo() {
+            return "Rectangle length = " + length + ", breadth = " + breadth;
         }
     }
 
@@ -88,6 +97,10 @@ public class ShapeManagementApp {
             double s = perimeter() / 2;
             return Math.sqrt(s * (s - a) * (s - b) * (s - c));
         }
+
+        String extraInfo() {
+            return "Triangle sides = " + a + ", " + b + ", " + c;
+        }
     }
 
     static class Square extends Shape {
@@ -107,6 +120,10 @@ public class ShapeManagementApp {
 
         double perimeter() {
             return 4 * side;
+        }
+
+        String extraInfo() {
+            return "Square side = " + side;
         }
     }
 
@@ -155,13 +172,7 @@ public class ShapeManagementApp {
         System.out.println();
         System.out.println("---- Extra Info ----");
         for (int i = 0; i < shapes.length; i++) {
-            if (shapes[i] instanceof Circle) {
-                Circle c = (Circle) shapes[i];
-                System.out.println("Circle radius = " + c.radius);
-            } else if (shapes[i] instanceof Square) {
-                Square sq = (Square) shapes[i];
-                System.out.println("Square side = " + sq.side);
-            }
+            System.out.println(shapes[i].extraInfo());
         }
 
         System.out.println();
@@ -169,4 +180,3 @@ public class ShapeManagementApp {
         System.out.println("Rectangle made with wrong values got fixed to default -> " + testShape);
     }
 }
-
